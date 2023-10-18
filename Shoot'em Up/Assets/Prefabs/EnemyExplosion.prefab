@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 2199859184858483844}
   - component: {fileID: 5397328021419499031}
   - component: {fileID: 1808349858912881110}
+  - component: {fileID: 3114175285849932272}
   m_Layer: 0
   m_Name: EnemyExplosion
   m_TagString: Untagged
@@ -71,8 +72,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 1633543677
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300008, guid: bf8ddafe189b90247b484ca8b8e3ceca, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -106,3 +107,15 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &3114175285849932272
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6317711828458721073}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a610cfb10e8fd194f9713547c9ed3cf4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

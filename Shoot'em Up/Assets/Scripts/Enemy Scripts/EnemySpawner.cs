@@ -9,9 +9,7 @@ public class EnemySpawner : MonoBehaviour
 
     void Start()
     {
-        Invoke("SpawnEnemy", maxSpawnRateInSeconds);
 
-        InvokeRepeating("IncreaseSpawnRate", 0f, 30f);
     }
 
     void SpawnEnemy()
@@ -51,5 +49,18 @@ public class EnemySpawner : MonoBehaviour
         {
             CancelInvoke("IncreaseSpawnRate");
         }
+    }
+
+
+    public void StartEnemySpawn()
+    {
+        maxSpawnRateInSeconds = 2f;
+        Invoke("SpawnEnemy", maxSpawnRateInSeconds);
+        InvokeRepeating("IncreaseSpawnRate", 0f, 30f);
+    }
+    public void StopEnemySpawn()
+    {
+        CancelInvoke("SpawnEnemy");
+        CancelInvoke("IncreaseSpawnRate");
     }
 }

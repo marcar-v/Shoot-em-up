@@ -1,15 +1,27 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class EnemyDamaged : MonoBehaviour
 {
+
     [SerializeField] GameObject enemyExplosionAnimation;
+
+    GameObject scoreText;
+
+
+    private void Start()
+    {
+        scoreText = GameObject.FindGameObjectWithTag("ScoreText");
+    }
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.tag == "Player" || collision.tag == "PlayerBullet")
         {
             PlayExplosion();
+
+            scoreText.GetComponent<GameScore>().Score += 100;
 
             Destroy(gameObject);
         }
