@@ -21,9 +21,10 @@ public class EnemyDamaged : MonoBehaviour
         {
             PlayExplosion();
 
+            Destroy(gameObject);
+
             scoreText.GetComponent<GameScore>().Score += 100;
 
-            Destroy(gameObject);
         }
     }
 

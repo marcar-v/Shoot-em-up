@@ -24,7 +24,7 @@ public class PlayerBullets : MonoBehaviour
     {
         if (collision.tag == "Enemy")
         {
-            Destroy(this.gameObject);
+            Destroy(gameObject);
         }
     }
 }

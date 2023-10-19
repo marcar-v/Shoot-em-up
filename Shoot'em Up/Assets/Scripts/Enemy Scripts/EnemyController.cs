@@ -5,12 +5,6 @@ using UnityEngine;
 public class EnemyController : MonoBehaviour
 {
     float speed = 2.5f;
-
-    void Start()
-    {
-        
-    }
-
     void Update()
     {
         Vector2 position = transform.position;

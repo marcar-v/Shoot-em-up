@@ -10,6 +10,8 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] GameObject scoreText;
 
+    [SerializeField] GameObject timeText;
+
     public enum GameManagerState
     {
         Opening,
@@ -38,6 +40,8 @@ public class GameManager : MonoBehaviour
 
                 scoreText.GetComponent<GameScore>().Score = 0;
 
+                timeText.GetComponent<TimerCounter>().StartTimeCounter();
+
                 playButton.SetActive(false);
 
                 playerShip.GetComponent<PlayerDamaged>().Init();
@@ -48,9 +52,12 @@ public class GameManager : MonoBehaviour
 
             case GameManagerState.GameOver:
 
-                Invoke("ChangeToOpeningState", 5f);
+                timeText.GetComponent<TimerCounter>().StopTimeCounter();
 
                 enemySpawner.GetComponent<EnemySpawner>().StopEnemySpawn();
+
+                Invoke("ChangeToOpeningState", 5f);
+
                 break;
 
         }

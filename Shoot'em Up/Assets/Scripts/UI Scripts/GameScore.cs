@@ -9,7 +9,8 @@ public class GameScore : MonoBehaviour
     TextMeshProUGUI scoreText;
     int score;
 
-    public int Score { 
+    public int Score 
+    { 
         get
         {
             return this.score;

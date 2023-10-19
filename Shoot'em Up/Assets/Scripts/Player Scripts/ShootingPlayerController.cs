@@ -8,14 +8,9 @@ public class ShootingPlayerController : MonoBehaviour
     [SerializeField] GameObject bulletPosition1;
     [SerializeField] GameObject bulletPosition2;
 
-    void Start()
-    {
-        
-    }
-
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Mouse0))
+        if(Input.GetKeyDown(KeyCode.Mouse0) || Input.GetKeyDown(KeyCode.Space))
         {
             GameObject bullet1 = (GameObject)Instantiate(playerBullet);
             bullet1.transform.position = bulletPosition1.transform.position;
