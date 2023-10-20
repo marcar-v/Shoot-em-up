@@ -13,6 +13,11 @@ public class PlanetController : MonoBehaviour
         avaliablePlanets.Enqueue(planets[0]);
         avaliablePlanets.Enqueue(planets[1]);
         avaliablePlanets.Enqueue(planets[2]);
+        avaliablePlanets.Enqueue(planets[3]);
+        avaliablePlanets.Enqueue(planets[4]);
+        avaliablePlanets.Enqueue(planets[5]);
+
+
 
         InvokeRepeating("MovePlanetDown", 0, 15f);
     }

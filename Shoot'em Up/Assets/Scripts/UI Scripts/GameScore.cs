@@ -13,11 +13,11 @@ public class GameScore : MonoBehaviour
     { 
         get
         {
-            return this.score;
+            return score;
         }
         set
         {
-            this.score = value;
+            score = value;
             UpdateScoreTextUI();
         }
     
