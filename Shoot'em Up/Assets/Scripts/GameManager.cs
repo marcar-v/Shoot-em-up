@@ -20,7 +20,6 @@ public class GameManager : MonoBehaviour
     }
 
     GameManagerState gameManagerstate;
-    // Start is called before the first frame update
     void Start()
     {
         gameManagerstate = GameManagerState.Opening;

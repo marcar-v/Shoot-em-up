@@ -33,9 +33,4 @@ public class StarGenerator : MonoBehaviour
             stars.transform.parent = transform;
         }
     }
-
-    void Update()
-    {
-        
-    }
 }

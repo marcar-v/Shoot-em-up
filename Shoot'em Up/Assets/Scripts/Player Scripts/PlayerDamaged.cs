@@ -10,15 +10,15 @@ public class PlayerDamaged : MonoBehaviour
 
     [SerializeField] GameObject playerExplosionAnimation;
 
-    [Header("Lifes")]
+    [Header("Lives")]
     [SerializeField] TextMeshProUGUI lifeText;
-    [SerializeField] int maxLifes = 3;
-    private int currentLifes;
+    [SerializeField] int maxLives = 3;
+    private int currentLives;
 
     public void Init()
     {
-        currentLifes = maxLifes;
-        lifeText.text = currentLifes.ToString();
+        currentLives = maxLives;
+        lifeText.text = currentLives.ToString();
 
         gameObject.SetActive(true);
     }
@@ -28,10 +28,10 @@ public class PlayerDamaged : MonoBehaviour
         {
             PlayExplosion();
 
-            currentLifes--;
-            lifeText.text = currentLifes.ToString();
+            currentLives--;
+            lifeText.text = currentLives.ToString();
 
-            if (currentLifes == 0)
+            if (currentLives == 0)
             {
                 gameManager.GetComponent<GameManager>().SetGameManagerState(GameManager.GameManagerState.GameOver);
                 gameObject.SetActive(false);
