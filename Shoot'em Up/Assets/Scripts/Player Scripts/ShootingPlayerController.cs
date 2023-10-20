@@ -6,6 +6,7 @@ public class ShootingPlayerController : MonoBehaviour
 {
     [SerializeField] GameObject playerBullet;
     [SerializeField] GameObject bulletPosition1;
+    [SerializeField] AudioSource shootSound;
 
     void Update()
     {
@@ -13,6 +14,8 @@ public class ShootingPlayerController : MonoBehaviour
         {
             GameObject bullet1 = (GameObject)Instantiate(playerBullet);
             bullet1.transform.position = bulletPosition1.transform.position;
+
+            shootSound.Play();
         }
     }
 }

@@ -7,7 +7,7 @@ public class PlayerDamaged : MonoBehaviour
 {
     [SerializeField] GameObject gameManager;
 
-
+    [SerializeField] AudioSource playerExplosionSound;
     [SerializeField] GameObject playerExplosionAnimation;
 
     [Header("Lives")]
@@ -26,13 +26,17 @@ public class PlayerDamaged : MonoBehaviour
     {
         if(collision.tag == "Enemy" || collision.tag == "EnemyBullet")
         {
-            PlayExplosion();
+            
 
             currentLives--;
             lifeText.text = currentLives.ToString();
 
             if (currentLives == 0)
             {
+                PlayExplosion();
+
+                playerExplosionSound.Play();
+
                 gameManager.GetComponent<GameManager>().SetGameManagerState(GameManager.GameManagerState.GameOver);
                 gameObject.SetActive(false);
             }

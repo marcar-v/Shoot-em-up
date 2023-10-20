@@ -7,6 +7,7 @@ public class EnemyDamaged : MonoBehaviour
 {
 
     [SerializeField] GameObject enemyExplosionAnimation;
+    [SerializeField] AudioSource enemyExplosionSound;
 
     GameObject scoreText;
 
@@ -30,6 +31,8 @@ public class EnemyDamaged : MonoBehaviour
     void PlayExplosion()
     {
         GameObject explosion = (GameObject)Instantiate(enemyExplosionAnimation);
+
+        enemyExplosionSound.Play();
 
         explosion.transform.position = transform.position;
     }
