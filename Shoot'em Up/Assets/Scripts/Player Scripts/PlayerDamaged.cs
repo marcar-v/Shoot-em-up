@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class PlayerDamaged : MonoBehaviour
 {
@@ -13,6 +14,9 @@ public class PlayerDamaged : MonoBehaviour
     [SerializeField] TextMeshProUGUI lifeText;
     [SerializeField] int maxLives = 3;
     private int currentLives;
+    bool isDead;
+
+    [SerializeField] GameObject gameOverCanvas;
 
     private void Start()
     {
@@ -28,25 +32,48 @@ public class PlayerDamaged : MonoBehaviour
     {
         if(collision.tag == "Enemy" || collision.tag == "EnemyBullet")
         {
+            PlayerisDamaged();
+            PlayerDead();
+        }
+    }
 
-            animator.Play("Hit");
+    public void PlayerisDamaged()
+    {
+        animator.Play("Hit");
 
-            currentLives--;
-            lifeText.text = currentLives.ToString();
+        currentLives--;
+        lifeText.text = currentLives.ToString();
 
-            if (currentLives == 0)
-            {
-                PlayExplosion();
+    }
 
-                playerExplosionSound.Play();
+    public void PlayerDead()
+    {
+        if (currentLives == 0)
+        {
+            isDead = true;
 
-                gameObject.SetActive(false);
-            }
+            GameOver();
+
+            PlayExplosion();
+
+            playerExplosionSound.Play();
+
+            gameObject.SetActive(false);
+        }
+    }
+
+    public void GameOver()
+    {
+        if(isDead)
+        {
+            Time.timeScale = 0f;
+            gameOverCanvas.SetActive(true);
         }
     }
 
     void PlayExplosion()
     {
+
         GameObject explosion = (GameObject)Instantiate(playerExplosionAnimation);
 
         explosion.transform.position = transform.position;

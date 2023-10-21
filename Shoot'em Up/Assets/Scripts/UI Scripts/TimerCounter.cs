@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class TimerCounter : MonoBehaviour
 {
+
+    GameManager gameManager;
     TextMeshProUGUI timeUI;
     float startTime;
     float ellapsedTime;
@@ -16,20 +18,12 @@ public class TimerCounter : MonoBehaviour
 
     void Start()
     {
-        startCounter = false;
+
+        StartTimeCounter();
 
         timeUI = GetComponent<TextMeshProUGUI>();
-    }
 
-    public void StartTimeCounter()
-    {
-        startTime = Time.time;
-        startCounter = true;
-    }
-
-    public void StopTimeCounter()
-    {
-        startCounter = false;
+        gameManager = GetComponent<GameManager>();
     }
 
     void Update()
@@ -44,4 +38,28 @@ public class TimerCounter : MonoBehaviour
             timeUI.text = string.Format("{0:00}:{1:00}", minutes, seconds);
         }
     }
+
+    public void StartTimeCounter()
+    {
+        startTime = Time.time;
+        startCounter = true;
+    }
+
+    public void StopTimeCounter()
+    {
+        startCounter = false;
+    }
+
+    //public void ResetTime()
+    //{
+    //    if(gameManager.gameTime)
+    //    {
+    //        gameManager.time += Time.deltaTime;
+    //    }
+
+    //    minutes = (int)ellapsedTime / 60;
+    //    seconds = (int)ellapsedTime % 60;
+
+    //    timeUI.text = string.Format("{0:00}:{1:00}", minutes, seconds);
+    //}
 }
