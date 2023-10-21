@@ -5,28 +5,31 @@ using UnityEngine;
 
 public class PlayerDamaged : MonoBehaviour
 {
-    [SerializeField] GameObject gameManager;
-
     [SerializeField] AudioSource playerExplosionSound;
     [SerializeField] GameObject playerExplosionAnimation;
+    [SerializeField] Animator animator;
 
     [Header("Lives")]
     [SerializeField] TextMeshProUGUI lifeText;
     [SerializeField] int maxLives = 3;
     private int currentLives;
 
+    private void Start()
+    {
+        Init();
+    }
+
     public void Init()
     {
         currentLives = maxLives;
         lifeText.text = currentLives.ToString();
-
-        gameObject.SetActive(true);
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if(collision.tag == "Enemy" || collision.tag == "EnemyBullet")
         {
-            
+
+            animator.Play("Hit");
 
             currentLives--;
             lifeText.text = currentLives.ToString();
@@ -37,7 +40,6 @@ public class PlayerDamaged : MonoBehaviour
 
                 playerExplosionSound.Play();
 
-                gameManager.GetComponent<GameManager>().SetGameManagerState(GameManager.GameManagerState.GameOver);
                 gameObject.SetActive(false);
             }
         }

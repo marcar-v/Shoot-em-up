@@ -7,6 +7,11 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] GameObject enemy;
     float maxSpawnRateInSeconds = 2f;
 
+
+    private void Start()
+    {
+        Invoke("StartEnemySpawn", 2f);
+    }
     void SpawnEnemy()
     {
         Vector2 min = Camera.main.ViewportToWorldPoint(new Vector2(0,0));

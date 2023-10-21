@@ -1,81 +1,26 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-    [SerializeField] GameObject playButton;
-    [SerializeField] GameObject playerShip;
-    [SerializeField] GameObject enemySpawner;
+    [Header("Player")]
+    [SerializeField] GameObject player;
+    [SerializeField] Animator animator;
+    [SerializeField] GameObject transition;
+    
+    public static GameManager instance { get; private set; }
 
-    [SerializeField] GameObject scoreText;
-
-    [SerializeField] GameObject timeText;
-
-    public enum GameManagerState
+    private void Awake()
     {
-        Opening,
-        Gameplay,
-        GameOver,
-    }
-
-    GameManagerState gameManagerstate;
-    void Start()
-    {
-        gameManagerstate = GameManagerState.Opening;
-    }
-
-    void UpdateGameManagerState()
-    {
-        switch(gameManagerstate)
+        if (instance == null)
         {
-            case GameManagerState.Opening:
-
-                playButton.SetActive(true);
-
-                break;
-
-            case GameManagerState.Gameplay:
-
-                scoreText.GetComponent<GameScore>().Score = 0;
-
-                timeText.GetComponent<TimerCounter>().StartTimeCounter();
-
-                playButton.SetActive(false);
-
-                playerShip.GetComponent<PlayerDamaged>().Init();
-
-                enemySpawner.GetComponent<EnemySpawner>().StartEnemySpawn();
-
-                break;
-
-            case GameManagerState.GameOver:
-
-                timeText.GetComponent<TimerCounter>().StopTimeCounter();
-
-                enemySpawner.GetComponent<EnemySpawner>().StopEnemySpawn();
-
-                Invoke("ChangeToOpeningState", 5f);
-
-                break;
-
+            instance = this;
         }
-    }
-
-    public void SetGameManagerState(GameManagerState state)
-    {
-        gameManagerstate = state;
-        UpdateGameManagerState();
-    }
-
-    public void StartGame()
-    {
-        gameManagerstate = GameManagerState.Gameplay;
-        UpdateGameManagerState();
-    }
-
-    public void ChangeToOpeningState()
-    {
-        SetGameManagerState(GameManagerState.Opening);
+        else
+        {
+            Debug.Log("Cuidado, más de un Game Manager en escena.");
+        }
     }
 }
