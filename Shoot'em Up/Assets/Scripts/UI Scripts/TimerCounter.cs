@@ -5,8 +5,6 @@ using UnityEngine;
 
 public class TimerCounter : MonoBehaviour
 {
-
-    GameManager gameManager;
     TextMeshProUGUI timeUI;
     float startTime;
     float ellapsedTime;
@@ -22,8 +20,6 @@ public class TimerCounter : MonoBehaviour
         StartTimeCounter();
 
         timeUI = GetComponent<TextMeshProUGUI>();
-
-        gameManager = GetComponent<GameManager>();
     }
 
     void Update()

@@ -1667,10 +1667,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e67f61fe8afa6fe4e8f8d81405b89cba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timerCounterInstance: {fileID: 0}
-  playerDamaged: {fileID: 0}
-  isDead: 0
-  gameOver: 0
 --- !u!4 &1536708864
 Transform:
   m_ObjectHideFlags: 0
@@ -2550,6 +2546,22 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 682157549327786328, guid: 145d89e05bab2bf408044542d8912130, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 13.000047
+      objectReference: {fileID: 0}
+    - target: {fileID: 682157549327786328, guid: 145d89e05bab2bf408044542d8912130, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 600.00006
+      objectReference: {fileID: 0}
+    - target: {fileID: 691705424481932856, guid: 145d89e05bab2bf408044542d8912130, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 691705424481932856, guid: 145d89e05bab2bf408044542d8912130, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 854
+      objectReference: {fileID: 0}
     - target: {fileID: 821126310408480243, guid: 145d89e05bab2bf408044542d8912130, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
       value: 3
@@ -2709,6 +2721,14 @@ PrefabInstance:
     - target: {fileID: 2311213198445661958, guid: 145d89e05bab2bf408044542d8912130, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3155355553135935734, guid: 145d89e05bab2bf408044542d8912130, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 13.000047
+      objectReference: {fileID: 0}
+    - target: {fileID: 3155355553135935734, guid: 145d89e05bab2bf408044542d8912130, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 346.00006
       objectReference: {fileID: 0}
     - target: {fileID: 6326747914607791221, guid: 145d89e05bab2bf408044542d8912130, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
