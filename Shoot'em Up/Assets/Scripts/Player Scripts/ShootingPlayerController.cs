@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class ShootingPlayerController : MonoBehaviour
 {
@@ -10,7 +11,9 @@ public class ShootingPlayerController : MonoBehaviour
 
     void Update()
     {
-        if((Input.GetKeyDown(KeyCode.Mouse0) || Input.GetKeyDown(KeyCode.Space)) && Time.timeScale > 0)
+        var mouse = Mouse.current;
+
+        if(mouse.leftButton.isPressed && Time.timeScale > 0)
         {
             GameObject bullet1 = (GameObject)Instantiate(playerBullet);
             bullet1.transform.position = bulletPosition1.transform.position;

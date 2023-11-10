@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 7883758327260168641}
   - component: {fileID: 8211927207364338210}
   - component: {fileID: 4369663637211758762}
+  - component: {fileID: 202319857319970563}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -124,11 +125,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 924b702cf87aea34fa86ccfcbc7a240a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameManager: {fileID: 0}
   playerExplosionSound: {fileID: 4369663637211758762}
   playerExplosionAnimation: {fileID: 1430424532411227097, guid: e332dc0deeb72c343a3c26cb41cde970, type: 3}
+  animator: {fileID: 6159391416190462983}
   lifeText: {fileID: 0}
   maxLives: 3
+  gameOverCanvas: {fileID: 0}
 --- !u!114 &8859292986861956101
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -225,8 +227,8 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: b15e01a7bbf0a4c4eb8a3560b1549d74, type: 3}
-  m_PlayOnAwake: 1
-  m_Volume: 0.05
+  m_PlayOnAwake: 0
+  m_Volume: 1
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -310,6 +312,112 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &202319857319970563
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5464364702621472020}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Actions: {fileID: -944628639613478452, guid: 3188bf6066f80b34191654783bc8f92a, type: 3}
+  m_NotificationBehavior: 2
+  m_UIInputModule: {fileID: 0}
+  m_DeviceLostEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_DeviceRegainedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ControlsChangedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ActionEvents:
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 8859292986861956101}
+        m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
+        m_MethodName: HorizontalMovement
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 8859292986861956101}
+        m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
+        m_MethodName: VerticalMovement
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: fef513b4-8b6f-48a0-aca1-f9c1823d70fc
+    m_ActionName: Player/Move[/Keyboard/w,/Keyboard/upArrow,/Keyboard/s,/Keyboard/downArrow,/Keyboard/a,/Keyboard/leftArrow,/Keyboard/d,/Keyboard/rightArrow]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: d70a1f2d-4dee-4ee2-a235-a27818f34d84
+    m_ActionName: Player/Look[/Mouse/delta]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: d4780baf-f7ae-442d-b55e-63831b4ef3fa
+    m_ActionName: Player/Fire[/Mouse/leftButton]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 871f9830-a79d-4f1f-9176-e2feeb9e6e6c
+    m_ActionName: UI/Navigate[/Keyboard/w,/Keyboard/upArrow,/Keyboard/s,/Keyboard/downArrow,/Keyboard/a,/Keyboard/leftArrow,/Keyboard/d,/Keyboard/rightArrow]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 3adf90a2-86b3-4017-bbc0-c6a6b22daaac
+    m_ActionName: UI/Submit[/Keyboard/enter]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: d6a622ba-c315-4fc0-bf10-f1a6c71e5a74
+    m_ActionName: UI/Cancel[/Keyboard/escape]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: d7fee70e-7b09-4a48-a185-342409c7fdf9
+    m_ActionName: UI/Point[/Mouse/position]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: bc276363-2fe5-407b-97cf-13721f8bd8c8
+    m_ActionName: UI/Click[/Mouse/leftButton]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: c2506afb-e263-4799-9525-d26b56d722ea
+    m_ActionName: UI/ScrollWheel[/Mouse/scroll]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 7fd08b8b-ecf6-41f9-bea0-628eeebfef93
+    m_ActionName: UI/MiddleClick[/Mouse/middleButton]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 7c9e3194-12d7-44df-85b8-f27710114003
+    m_ActionName: UI/RightClick[/Mouse/rightButton]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 7e753a05-1f16-46c5-ba12-f7657f584ce0
+    m_ActionName: UI/TrackedDevicePosition
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: e291ff82-7fb3-4b9b-9abd-c3954e7fab71
+    m_ActionName: UI/TrackedDeviceOrientation
+  m_NeverAutoSwitchControlSchemes: 0
+  m_DefaultControlScheme: 
+  m_DefaultActionMap: Player
+  m_SplitScreenIndex: -1
+  m_Camera: {fileID: 0}
 --- !u!1 &8967360725989978519
 GameObject:
   m_ObjectHideFlags: 0
@@ -357,7 +465,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerBullet: {fileID: 1782264795211468951, guid: 014972cdc4aa2a140b0384f4291ff3b2, type: 3}
   bulletPosition1: {fileID: 8967360725989978519}
-  shootSound: {fileID: 0}
+  shootSound: {fileID: 4274020707854452604}
 --- !u!82 &4274020707854452604
 AudioSource:
   m_ObjectHideFlags: 0
@@ -369,7 +477,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: e9496be0c8d601f48b50744e680d5b0f, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 0.05
   m_Pitch: 1
   Loop: 0

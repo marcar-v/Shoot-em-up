@@ -2,37 +2,33 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Scripting.APIUpdating;
+using UnityEngine.InputSystem;
+using static UnityEditor.Timeline.TimelinePlaybackControls;
 
 public class PlayerController : MonoBehaviour
 {
     [SerializeField] float speed;
+    private Rigidbody2D rb;
+    private float horizontal;
+    private float vertical;
 
-    void Update()
+    private void Awake()
     {
-        float x = Input.GetAxisRaw("Horizontal");
-        float y = Input.GetAxisRaw("Vertical");
-
-        Vector2 direction = new Vector2(x, y).normalized;
-        Move(direction);
+        rb = GetComponent<Rigidbody2D>();
     }
 
-    private void Move(Vector2 direction)
+    private void Update()
     {
-        Vector2 min = Camera.main.ViewportToWorldPoint (new Vector2(0, 0));
-        Vector2 max = Camera.main.ViewportToWorldPoint(new Vector2(1, 1));
-        max.x = max.x - 0.225f;
-        min.x = min.x + 0.225f;
+        rb.velocity = new Vector2(horizontal * speed, vertical * speed);
+    }
 
-        max.y = max.y - 0.285f;
-        min.y = min.y + 0.285f;
+    public void HorizontalMovement(InputAction.CallbackContext context)
+    {
+        horizontal = context.ReadValue<Vector2>().x;
+    }
 
-        Vector2 pos = transform.position;
-
-        pos += direction * speed * Time.deltaTime;
-
-        pos.x = Mathf.Clamp(pos.x, min.x, max.x);
-        pos.y = Mathf.Clamp(pos.y, min.y, max.y);
-
-        transform.position = pos;
+    public void VerticalMovement(InputAction.CallbackContext context)
+    {
+        vertical = context.ReadValue<Vector2>().y;
     }
 }
