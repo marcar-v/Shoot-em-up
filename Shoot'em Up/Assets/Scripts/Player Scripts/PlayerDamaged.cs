@@ -6,9 +6,10 @@ using UnityEngine.UIElements;
 
 public class PlayerDamaged : MonoBehaviour
 {
-    [SerializeField] AudioSource playerExplosionSound;
-    [SerializeField] GameObject playerExplosionAnimation;
+    [SerializeField] GameObject playerExplosionAnim;
     [SerializeField] Animator animator;
+
+    AudioController _audioController = AudioController.audioControllerInstance;
 
     [Header("Lives")]
     [SerializeField] TextMeshProUGUI lifeText;
@@ -52,11 +53,9 @@ public class PlayerDamaged : MonoBehaviour
         {
             isDead = true;
 
-            GameOver();
+            Invoke("GameOver", 1f);
 
             PlayExplosion();
-
-            playerExplosionSound.Play();
 
             gameObject.SetActive(false);
         }
@@ -73,9 +72,8 @@ public class PlayerDamaged : MonoBehaviour
 
     void PlayExplosion()
     {
+        Instantiate(playerExplosionAnim, transform.position, Quaternion.identity);
 
-        GameObject explosion = (GameObject)Instantiate(playerExplosionAnimation);
-
-        explosion.transform.position = transform.position;
+        _audioController.PlayShipExplosion();
     }
 }

@@ -1,33 +1,37 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEngine.GraphicsBuffer;
 
 public class EnemyGun : MonoBehaviour
 {
     [SerializeField] GameObject enemyBullet;
     [SerializeField] AudioSource shootSound;
 
+    public float fireRate = 5;
+    private float maxFireRate = 1;
 
     void Start()
     {
-        Invoke("FireEnemyBullet", 1f);
+        InvokeRepeating("FireEnemyBullet", 1f, fireRate);
     }
+
 
     void FireEnemyBullet()
     {
-        GameObject playerShip = GameObject.Find("Player");
-
-        if (playerShip != null)
+        if (fireRate > maxFireRate)
         {
-            GameObject bullet = (GameObject)Instantiate(enemyBullet);
+        GameObject bullet = (GameObject)Instantiate(enemyBullet);
 
-            shootSound.Play();
+        shootSound.Play();
 
-            bullet.transform.position = transform.position;
+        bullet.transform.position = transform.position;
 
-            Vector2 direction = playerShip.transform.position - bullet.transform.position;
+        Vector2 direction = transform.position - bullet.transform.position;
 
-            bullet.GetComponent<EnemyBullets>().SetDirection(direction);
+        bullet.GetComponent<EnemyBullets>().SetDirection(direction);
+
+        fireRate = fireRate - 0.2f;
         }
     }
 

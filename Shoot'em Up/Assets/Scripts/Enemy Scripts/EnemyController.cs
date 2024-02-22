@@ -1,22 +1,57 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class EnemyController : MonoBehaviour
 {
-    float speed = 2.5f;
-    void Update()
+    public float speed = 0.5f;
+    Vector3 _direction = Vector3.right;
+    float downEdge = -8f;
+
+    private void Update()
     {
-        Vector2 position = transform.position;
+        Movement();
+        DestroyShip();
+    }
 
-        position = new Vector2(position.x, position.y - speed * Time.deltaTime);
+    void Movement()
+    {
+        this.transform.position += _direction * Time.deltaTime * this.speed;
+        Vector3 leftEdge = Camera.main.ViewportToWorldPoint(Vector3.zero);
+        Vector3 rightEdge = Camera.main.ViewportToWorldPoint(Vector3.right);
 
-        transform.position = position;
-        Vector2 min = Camera.main.ViewportToWorldPoint(new Vector2(0,0));
-        
-        if(transform.position.y < min.y)
+        foreach (Transform enemy in transform)
+        {
+            if (!enemy.gameObject.activeInHierarchy)
+            {
+                continue;
+            }
+
+            if (_direction == Vector3.right && enemy.position.x >= (rightEdge.x - 2f))
+            {
+                ChangeDirection();
+            }
+            else if (_direction == Vector3.left && enemy.position.x <= (leftEdge.x + 2f))
+            {
+                ChangeDirection();
+            }
+        }
+    }
+    void DestroyShip()
+    {
+        if (transform.position.y < downEdge)
         {
             Destroy(gameObject);
         }
+    }
+    void ChangeDirection()
+    {
+        _direction.x *= -1f;
+        Vector3 position = transform.position;
+        position.y -= 0.5f;
+        transform.position = position;
+        speed += 0.1f;
     }
 }

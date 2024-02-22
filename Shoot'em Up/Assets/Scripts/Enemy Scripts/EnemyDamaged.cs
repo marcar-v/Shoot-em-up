@@ -7,12 +7,10 @@ public class EnemyDamaged : MonoBehaviour
 {
 
     [SerializeField] GameObject enemyExplosionAnimation;
-    [SerializeField] AudioSource enemyExplosionSound;
-
     GameObject scoreText;
+    AudioController audioController = AudioController.audioControllerInstance;
 
-
-    private void Start()
+    private void Awake()
     {
         scoreText = GameObject.FindGameObjectWithTag("ScoreText");
     }
@@ -20,9 +18,9 @@ public class EnemyDamaged : MonoBehaviour
     {
         if (collision.tag == "Player" || collision.tag == "PlayerBullet")
         {
-            PlayExplosion();
-
             scoreText.GetComponent<GameScore>().Score += 100;
+
+            PlayExplosion();
 
             Destroy(gameObject);
         }
@@ -30,10 +28,8 @@ public class EnemyDamaged : MonoBehaviour
 
     void PlayExplosion()
     {
-        GameObject explosion = (GameObject)Instantiate(enemyExplosionAnimation);
-        
-        enemyExplosionSound.Play();
+        Instantiate(enemyExplosionAnimation, transform.position, Quaternion.identity);
 
-        explosion.transform.position = transform.position;
+        audioController.PlayShipExplosion();
     }
 }

@@ -8,6 +8,22 @@ public class ShootingPlayerController : MonoBehaviour
     [SerializeField] GameObject bulletPosition1;
     [SerializeField] AudioSource shootSound;
 
+    [SerializeField] SpecialAttackController specialAttackController;
+
+    private void Awake()
+    {
+        specialAttackController = FindObjectOfType<SpecialAttackController>();
+    }
+
+    private void OnEnable()
+    {
+        specialAttackController.specialAttackReleased += ShootSpecialAttack;
+    }
+    private void OnDisable()
+    {
+        specialAttackController.specialAttackReleased -= ShootSpecialAttack;
+    }
+
     void Update()
     {
         if((Input.GetKeyDown(KeyCode.Mouse0) || Input.GetKeyDown(KeyCode.Space)) && Time.timeScale > 0)
@@ -18,4 +34,10 @@ public class ShootingPlayerController : MonoBehaviour
             shootSound.Play();
         }
     }
+
+    public void ShootSpecialAttack()
+    {
+        Debug.Log("SpecialAttack");
+    }
+
 }

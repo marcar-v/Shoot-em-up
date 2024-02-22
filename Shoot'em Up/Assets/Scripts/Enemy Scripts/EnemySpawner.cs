@@ -4,63 +4,55 @@ using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
 {
-    [SerializeField] GameObject enemy;
-    float maxSpawnRateInSeconds = 2f;
+    [SerializeField] GameObject[] enemies;
+    [SerializeField] int rows = 2;
+    [SerializeField] int columns = 1;
+    [SerializeField] float spacing = 0.5f;
 
+    int _enemiesSpawned;
+    int _totalEnemiesSpawned = 2;
 
-    private void Start()
+    private static EnemySpawner _instance;
+
+    public static EnemySpawner instance { get; private set; }
+
+    private void Awake()
     {
-        Invoke("StartEnemySpawn", 2f);
-    }
-    void SpawnEnemy()
-    {
-        Vector2 min = Camera.main.ViewportToWorldPoint(new Vector2(0,0));
-        Vector2 max = Camera.main.ViewportToWorldPoint(new Vector2(1,1));
-
-        GameObject anEnemy = (GameObject)Instantiate(enemy);
-        anEnemy.transform.position = new Vector2(Random.Range (min.x,max.x),max.y);
-
-        RateEnemySpawn();
-    }
-
-    void RateEnemySpawn()
-    {
-        float spawnInSeconds;
-
-        if(maxSpawnRateInSeconds > 1) 
+        if (_instance == null)
         {
-            spawnInSeconds = Random.Range(1f, maxSpawnRateInSeconds);
+            _instance = this;
+            Debug.Log("EnemySpawner instanciado");
         }
         else
         {
-            spawnInSeconds = 1f;
+            Debug.Log("Cuidado, más de un Game Manager en escena.");
         }
-
-        Invoke("SpawnEnemy", spawnInSeconds);
     }
-
-    private void IncreaseSpawnRate()
+    private void Start()
     {
-        if(maxSpawnRateInSeconds > 1f)
+        InvokeRepeating("SpawnEnemies", 0f, 20f);
+    }
+    public void SpawnEnemies()
+    {
+        float screenWidth = Camera.main.orthographicSize * 2.0f * Screen.width / Screen.height;
+        float startX = -screenWidth / 10f + spacing / 2.0f;
+
+        for (int row = 0; row < rows; row++)
         {
-            maxSpawnRateInSeconds--;
-        }
-        if(maxSpawnRateInSeconds == 1f)
-        {
-            CancelInvoke("IncreaseSpawnRate");
-        }
-    }
+            for (int col = 0; col < columns; col++)
+            {
+                if(_enemiesSpawned < _totalEnemiesSpawned)
+                {
+                    float x = startX + col * spacing;
+                    float y = Camera.main.orthographicSize * 1.1f + (row * spacing);
 
+                    Vector3 spawnPosition = new Vector3(x, y, 0f);
 
-    public void StartEnemySpawn()
-    {
-        maxSpawnRateInSeconds = 2f;
-        Invoke("SpawnEnemy", maxSpawnRateInSeconds);
-        InvokeRepeating("IncreaseSpawnRate", 0f, 15f);
-    }
-    public void StopEnemySpawn()
-    {
-        CancelInvoke("SpawnEnemy");
-        CancelInvoke("IncreaseSpawnRate");
+                    int i = Random.Range(0, enemies.Length);
+                    Instantiate(enemies[i], spawnPosition, Quaternion.identity);
+                }
+
+            }
+        }
     }
 }
