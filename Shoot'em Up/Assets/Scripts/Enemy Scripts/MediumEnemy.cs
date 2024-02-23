@@ -4,15 +4,33 @@ using UnityEngine;
 
 public class MediumEnemy : EnemyController
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] int lives = 2;
+    [SerializeField] Animator animator;
+    
+    public virtual void OnTriggerEnter2D(Collider2D collision)
     {
-        
+        if (collision.tag == "Player" || collision.tag == "PlayerBullet")
+        {
+            EnemyDamaged();
+            EnemyDead();
+        }
     }
 
-    // Update is called once per frame
-    void Update()
+    void EnemyDamaged()
     {
-        
+        animator.Play("EnemyDamaged");
+        lives--;
+    }
+
+    void EnemyDead()
+    {
+        if (lives == 0)
+        {
+            scoreText.GetComponent<GameScore>().Score += 100;
+
+            PlayExplosion();
+
+            Destroy(gameObject);
+        }
     }
 }

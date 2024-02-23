@@ -53,6 +53,8 @@ public class PlayerDamaged : MonoBehaviour
         {
             isDead = true;
 
+            GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+
             Invoke("GameOver", 1f);
 
             PlayExplosion();

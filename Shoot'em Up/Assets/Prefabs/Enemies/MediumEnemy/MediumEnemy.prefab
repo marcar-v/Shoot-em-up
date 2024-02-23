@@ -47,7 +47,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyBullet: {fileID: 7222759408745568210, guid: 619fee7127109bf4d8e001bda4f635d8, type: 3}
   shootSound: {fileID: 3608309924839843531}
-  fireRate: 5
+  fireRate: 6
 --- !u!82 &3608309924839843531
 AudioSource:
   m_ObjectHideFlags: 0
@@ -299,6 +299,7 @@ GameObject:
   - component: {fileID: 3932024274035645436}
   - component: {fileID: 7050120513079749295}
   - component: {fileID: 6423493714599633187}
+  - component: {fileID: 571818996866238534}
   - component: {fileID: 4149899248332224031}
   m_Layer: 0
   m_Name: MediumEnemy
@@ -397,6 +398,22 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &571818996866238534
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9138134883188884207}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 90750773d4fd6784a9c519856aeac74a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 1
+  enemyExplosionAnimation: {fileID: 6317711828458721073, guid: 2bba83705cbd54240a5f3af4af30b8c2, type: 3}
+  lives: 2
+  animator: {fileID: 6423493714599633187}
 --- !u!61 &4149899248332224031
 BoxCollider2D:
   m_ObjectHideFlags: 0
