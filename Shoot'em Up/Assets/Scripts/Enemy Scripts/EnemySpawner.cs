@@ -30,9 +30,9 @@ public class EnemySpawner : MonoBehaviour
     }
     private void Start()
     {
-        InvokeRepeating("SpawnEnemies", 0f, 20f);
+        InvokeRepeating("SpawnSmallEnemies", 0f, 20f);
     }
-    public void SpawnEnemies()
+    public void SpawnSmallEnemies()
     {
         float screenWidth = Camera.main.orthographicSize * 2.0f * Screen.width / Screen.height;
         float startX = -screenWidth / 10f + spacing / 2.0f;
@@ -41,7 +41,7 @@ public class EnemySpawner : MonoBehaviour
         {
             for (int col = 0; col < columns; col++)
             {
-                if(_enemiesSpawned < _totalEnemiesSpawned)
+                if (_enemiesSpawned < _totalEnemiesSpawned)
                 {
                     float x = startX + col * spacing;
                     float y = Camera.main.orthographicSize * 1.1f + (row * spacing);

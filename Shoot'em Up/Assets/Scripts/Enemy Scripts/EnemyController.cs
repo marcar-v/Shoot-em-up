@@ -68,13 +68,11 @@ public class EnemyController : MonoBehaviour
     #endregion
 
     #region "Damaged"
-
-
     public virtual void PlayExplosion()
     {
         Instantiate(enemyExplosionAnimation, transform.position, Quaternion.identity);
 
-        //audioController.PlayShipExplosion();
+        audioController.PlayShipExplosion();
     }
     #endregion
 }
