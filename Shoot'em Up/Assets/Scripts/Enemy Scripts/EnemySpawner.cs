@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
 {
-    [SerializeField] GameObject[] enemies;
+    public  GameObject[] enemies;
     [SerializeField] int rows = 2;
     [SerializeField] int columns = 1;
     [SerializeField] float spacing = 0.5f;
@@ -25,7 +25,7 @@ public class EnemySpawner : MonoBehaviour
         }
         else
         {
-            Debug.Log("Cuidado, más de un Game Manager en escena.");
+            Debug.Log("Cuidado, más de un Enemy Spawner en escena.");
         }
     }
     private void Start()

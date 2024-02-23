@@ -299,9 +299,7 @@ GameObject:
   - component: {fileID: 3932024274035645436}
   - component: {fileID: 7050120513079749295}
   - component: {fileID: 6423493714599633187}
-  - component: {fileID: -82653929354024007}
   - component: {fileID: 4149899248332224031}
-  - component: {fileID: 722713668392385937}
   m_Layer: 0
   m_Name: MediumEnemy
   m_TagString: Enemy
@@ -399,19 +397,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &-82653929354024007
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9138134883188884207}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bce678e67f167d14e82ad19a2a8e042e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 0.5
 --- !u!61 &4149899248332224031
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -457,16 +442,3 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.819499, y: 1.7159476}
   m_EdgeRadius: 0
---- !u!114 &722713668392385937
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9138134883188884207}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a5b39983a3afbc84bbbca8f6aea04516, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  enemyExplosionAnimation: {fileID: 6317711828458721073, guid: 2bba83705cbd54240a5f3af4af30b8c2, type: 3}

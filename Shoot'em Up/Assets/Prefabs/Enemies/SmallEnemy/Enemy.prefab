@@ -48,7 +48,6 @@ MonoBehaviour:
   enemyBullet: {fileID: 9034560039506741438, guid: a2f1a8e05c0c6a74e9c162441a234a05, type: 3}
   shootSound: {fileID: 9066578497778555929}
   fireRate: 5
-  _aggroDistance: 4
 --- !u!82 &9066578497778555929
 AudioSource:
   m_ObjectHideFlags: 0
@@ -156,9 +155,8 @@ GameObject:
   - component: {fileID: 7250881608240818089}
   - component: {fileID: 7685179765383875934}
   - component: {fileID: 4074741269565734159}
-  - component: {fileID: 6273724065506347597}
-  - component: {fileID: 4637307448490215859}
   - component: {fileID: 102799158186529138}
+  - component: {fileID: 5141294465884292979}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Enemy
@@ -226,7 +224,7 @@ SpriteRenderer:
   m_Sprite: {fileID: -1921794863, guid: fcb9a7b2135ad8e449eea71a7ea83bb0, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
-  m_FlipY: 1
+  m_FlipY: 0
   m_DrawMode: 0
   m_Size: {x: 0.36, y: 0.45}
   m_AdaptiveModeThreshold: 0.5
@@ -255,32 +253,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &6273724065506347597
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4059639824188841113}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bce678e67f167d14e82ad19a2a8e042e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 0.5
---- !u!114 &4637307448490215859
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4059639824188841113}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a5b39983a3afbc84bbbca8f6aea04516, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  enemyExplosionAnimation: {fileID: 6317711828458721073, guid: 0915c57ff78b75d4eabba14ebee2828e, type: 3}
 --- !u!61 &102799158186529138
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -326,3 +298,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.33, y: 0.35}
   m_EdgeRadius: 0
+--- !u!114 &5141294465884292979
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4059639824188841113}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 223c9ff8600498e41959764a42ba7860, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 1
+  enemyExplosionAnimation: {fileID: 6317711828458721073, guid: 0915c57ff78b75d4eabba14ebee2828e, type: 3}
+  lives: 1

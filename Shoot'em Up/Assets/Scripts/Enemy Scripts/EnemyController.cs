@@ -10,6 +10,17 @@ public class EnemyController : MonoBehaviour
     Vector3 _direction = Vector3.right;
     float downEdge = -8f;
 
+    [Header("Enemy Damaged Settings")]
+    [SerializeField] GameObject enemyExplosionAnimation;
+    protected GameObject scoreText;
+    AudioController audioController = AudioController.audioControllerInstance;
+
+    private void Awake()
+    {
+        scoreText = GameObject.FindGameObjectWithTag("ScoreText");
+    }
+
+    #region "Movement"
     private void Update()
     {
         Movement();
@@ -54,4 +65,16 @@ public class EnemyController : MonoBehaviour
         transform.position = position;
         speed += 0.1f;
     }
+    #endregion
+
+    #region "Damaged"
+
+
+    public virtual void PlayExplosion()
+    {
+        Instantiate(enemyExplosionAnimation, transform.position, Quaternion.identity);
+
+        //audioController.PlayShipExplosion();
+    }
+    #endregion
 }

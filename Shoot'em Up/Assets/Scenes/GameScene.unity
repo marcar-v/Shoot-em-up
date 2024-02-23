@@ -701,7 +701,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemies:
   - {fileID: 4059639824188841113, guid: 5a9b76fecbbcab64b8c6dec3e50b6d0a, type: 3}
-  - {fileID: 9138134883188884207, guid: 40286515a164155419d4e3fe20cbac10, type: 3}
   rows: 2
   columns: 3
   spacing: 0.5
@@ -1097,7 +1096,7 @@ PrefabInstance:
       objectReference: {fileID: 778008861}
     - target: {fileID: 7883758327260168641, guid: 24019c18e954a5c4383ed909a254253e, type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
