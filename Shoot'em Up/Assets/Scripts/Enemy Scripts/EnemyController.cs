@@ -6,17 +6,21 @@ using UnityEngine.UIElements;
 
 public class EnemyController : MonoBehaviour
 {
-    public float speed = 0.5f;
+    protected float speed = 0.5f;
     Vector3 _direction = Vector3.right;
-    float downEdge = -8f;
+    float downEdge = -5f;
 
     [Header("Enemy Damaged Settings")]
     [SerializeField] GameObject enemyExplosionAnimation;
     protected GameObject scoreText;
     AudioController audioController = AudioController.audioControllerInstance;
 
+    protected ShootingPlayerController specialAttack;
+
     private void Awake()
     {
+        specialAttack = FindObjectOfType<ShootingPlayerController>();
+
         scoreText = GameObject.FindGameObjectWithTag("ScoreText");
     }
 

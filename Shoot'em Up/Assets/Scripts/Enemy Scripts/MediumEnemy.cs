@@ -16,6 +16,16 @@ public class MediumEnemy : EnemyController
         }
     }
 
+    private void OnEnable()
+    {
+        specialAttack.specialAttackReleased += EnemyDamaged;
+    }
+
+    private void OnDisable()
+    {
+        specialAttack.specialAttackReleased -= EnemyDamaged;
+    }
+
     void EnemyDamaged()
     {
         animator.Play("EnemyDamaged");
@@ -26,7 +36,7 @@ public class MediumEnemy : EnemyController
     {
         if (lives == 0)
         {
-            scoreText.GetComponent<GameScore>().Score += 100;
+            scoreText.GetComponent<GameScore>().Score += 200;
 
             PlayExplosion();
 
