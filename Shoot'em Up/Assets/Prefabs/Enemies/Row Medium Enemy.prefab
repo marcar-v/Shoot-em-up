@@ -9,7 +9,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7606681033026483191}
-  - component: {fileID: 4210744754146459838}
   m_Layer: 0
   m_Name: Row Medium Enemy
   m_TagString: Untagged
@@ -38,20 +37,6 @@ Transform:
   - {fileID: 3650930285138031241}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &4210744754146459838
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7680238749957925643}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bce678e67f167d14e82ad19a2a8e042e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 0.5
-  enemyExplosionAnimation: {fileID: 0}
 --- !u!1001 &305100177407322485
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -32,7 +32,7 @@ public class EnemySpawner : MonoBehaviour
     }
     private void Start()
     {
-        InvokeRepeating("SpawnSmallEnemies", 0f, 10f);
+        InvokeRepeating("SpawnSmallEnemies", 0f, 15f);
     }
 
     private void Update()
@@ -71,7 +71,7 @@ public class EnemySpawner : MonoBehaviour
         {
             for (int col = 0; col < columns; col++)
             {
-                if (_enemiesSpawned < _totalEnemiesSpawned && waves >= 18)
+                if (_enemiesSpawned < _totalEnemiesSpawned && waves >= 6)
                 {
                     float x = startX + col * spacing;
                     float y = Camera.main.orthographicSize * 1.5f + (row * spacing);

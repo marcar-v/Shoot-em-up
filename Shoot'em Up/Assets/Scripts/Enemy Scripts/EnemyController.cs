@@ -6,7 +6,7 @@ using UnityEngine.UIElements;
 
 public class EnemyController : MonoBehaviour
 {
-    protected float speed = 0.5f;
+    protected float speed = 1f;
     Vector3 _direction = Vector3.right;
     float downEdge = -5f;
 
