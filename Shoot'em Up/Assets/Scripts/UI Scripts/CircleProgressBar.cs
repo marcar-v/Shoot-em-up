@@ -1,43 +1,87 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public class CircleProgressBar : MonoBehaviour
 {
-    bool _isActive = false;
-    float _indicatorTimer;
-    float _maxIndicatorTimer;
-    Image _radialProgressBar;
+    public delegate void SpecialAttackDelegate();
+    public event SpecialAttackDelegate specialAttackReleased;
 
-    private void Awake()
+    [SerializeField] Image _circleFill;
+    [SerializeField] int _duration;
+    [SerializeField] int _remainingTime;
+    bool _pause;
+    
+    private void Start()
     {
-        _radialProgressBar = GetComponent<Image>();
+        Begin(_duration);
     }
-
     private void Update()
     {
-        if (_isActive && Input.GetKeyDown(KeyCode.LeftShift))
+        if (Input.GetKeyDown(KeyCode.LeftShift))
         {
-            _indicatorTimer -= Time.deltaTime;
-            _radialProgressBar.fillAmount = (_indicatorTimer / _maxIndicatorTimer);
-        }
-
-        if(_indicatorTimer <= 0)
-        {
-            StopCountdown();
+            Begin(_duration);
         }
     }
-
-    public void ActivateCountdown(float countdownTime)
+    void Begin(int second)
     {
-        _isActive = true;
-        _maxIndicatorTimer = countdownTime;
-        _indicatorTimer = _maxIndicatorTimer;
+        if(specialAttackReleased != null)
+        {
+            _remainingTime = second;
+            StartCoroutine(UpdateTimer());
+            specialAttackReleased();
+        }
     }
 
-    public void StopCountdown()
+    IEnumerator UpdateTimer()
     {
-        _isActive = false;
+        while(_remainingTime >= 0)
+        {
+            if(!_pause)
+            {
+                _circleFill.fillAmount = Mathf.InverseLerp(0, _duration, _remainingTime);
+                _remainingTime--;
+                yield return new WaitForSeconds(1f);
+            }
+            yield return null;
+        }
     }
+
+    //bool _isActive = false;
+    //float _indicatorTimer;
+    //float _maxIndicatorTimer;
+    //Image _radialProgressBar;
+
+    //private void Awake()
+    //{
+    //    _radialProgressBar = GetComponent<Image>();
+    //}
+
+    //private void Update()
+    //{
+    //    if (_isActive && Input.GetKeyDown(KeyCode.LeftShift))
+    //    {
+    //        _indicatorTimer -= Time.deltaTime;
+    //        _radialProgressBar.fillAmount = (_indicatorTimer / _maxIndicatorTimer);
+    //    }
+
+    //    if(_indicatorTimer <= 0)
+    //    {
+    //        StopCountdown();
+    //    }
+    //}
+
+    //public void ActivateCountdown(float countdownTime)
+    //{
+    //    _isActive = true;
+    //    _maxIndicatorTimer = countdownTime;
+    //    _indicatorTimer = _maxIndicatorTimer;
+    //}
+
+    //public void StopCountdown()
+    //{
+    //    _isActive = false;
+    //}
 }

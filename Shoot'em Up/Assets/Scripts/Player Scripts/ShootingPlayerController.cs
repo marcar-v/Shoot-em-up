@@ -1,4 +1,6 @@
+using System.Collections;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ShootingPlayerController : MonoBehaviour
 {
@@ -9,6 +11,7 @@ public class ShootingPlayerController : MonoBehaviour
     [SerializeField] GameObject playerBullet;
     [SerializeField] GameObject bulletPosition1;
     [SerializeField] AudioSource shootSound;
+    [SerializeField] GameObject specialAttackBullet;
 
     void Update()
     {
@@ -21,7 +24,8 @@ public class ShootingPlayerController : MonoBehaviour
         }
         if(Input.GetKeyDown(KeyCode.LeftShift))
         {
-            SpecialShoot();
+            Invoke("SpecialShoot", 1.5f);
+            SpecialAttackBullet();
         }
     }
 
@@ -32,5 +36,10 @@ public class ShootingPlayerController : MonoBehaviour
             Debug.Log("Bomb Released");
             specialAttackReleased();
         }
+    }
+    void SpecialAttackBullet()
+    {
+        GameObject specialBullet1 = (GameObject)Instantiate(specialAttackBullet);
+        specialBullet1.transform.position = bulletPosition1.transform.position;
     }
 }

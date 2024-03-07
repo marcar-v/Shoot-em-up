@@ -21,12 +21,12 @@ public class SpecialAttackButton : MonoBehaviour
     {
         specialAttackAvaliable = true;
         specialAttack.SetActive(true);
-        specialAttack.transform.Find("RadialProgressBar").GetComponent<CircleProgressBar>().ActivateCountdown(duration);
+        //specialAttack.transform.Find("RadialProgressBar").GetComponent<CircleProgressBar>().UpdateTimer();
 
         StartCoroutine(CantUseSpecialAttack(duration));
     }
 
-    IEnumerator CantUseSpecialAttack(float delay)
+    public IEnumerator CantUseSpecialAttack(float delay)
     {
         yield return new WaitForSeconds(delay);
 
