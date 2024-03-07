@@ -24,7 +24,7 @@ public class ShootingPlayerController : MonoBehaviour
         }
         if(Input.GetKeyDown(KeyCode.LeftShift))
         {
-            Invoke("SpecialShoot", 1.5f);
+            Invoke("SpecialShoot", 0.5f);
             SpecialAttackBullet();
         }
     }
