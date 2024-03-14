@@ -14,9 +14,6 @@ public class AudioController : MonoBehaviour
     [Header("SHIP SOUNDS")]
     [SerializeField] AudioSource shipExplosionSound;
 
-
-    //private static AudioController _audioControllerInstance;
-
     public static AudioController audioControllerInstance = null;
     private void Awake()
     {

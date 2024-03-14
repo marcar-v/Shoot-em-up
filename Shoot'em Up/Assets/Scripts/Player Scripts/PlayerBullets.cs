@@ -4,27 +4,21 @@ using UnityEngine;
 
 public class PlayerBullets : MonoBehaviour
 {
-    [SerializeField] float speed;
-
-    void Update()
+    private void OnEnable()
     {
-        Vector2 position = transform.position;
-        position = new Vector2(position.x, position.y + speed * Time.deltaTime);
-        transform.position = position;
-
-        Vector2 max = Camera.main.ViewportToWorldPoint(new Vector2(1, 1));
-
-        if(transform.position.y > max.y)
-        {
-            Destroy(gameObject);
-        }
+        GetComponent<Rigidbody2D>().velocity = new Vector2(0f, 10f);
+    }
+    private void OnBecameInvisible()
+    {
+        gameObject.transform.position = new Vector3(0, 0.3f);
+        gameObject.SetActive(false);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.tag == "Enemy")
         {
-            Destroy(gameObject);
+            gameObject.SetActive(false);
         }
     }
 }

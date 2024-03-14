@@ -1,23 +1,16 @@
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
-using static UnityEngine.GraphicsBuffer;
 
 public class EnemyBullets : MonoBehaviour
 {
     float speed = 5f;
     Vector2 bulletDirection;
     bool isReady;
-    //float minDelay = 1f;
-    //float maxDelay = 3f;
 
-    //float upEdge = -1f;
     Transform enemy;
 
     private void Awake()
     {
-        speed = 5f;
+        //speed = 5f;
         isReady = false;
         enemy = GameObject.FindGameObjectWithTag("Enemy").transform;
     }
@@ -32,7 +25,19 @@ public class EnemyBullets : MonoBehaviour
 
     private void Update()
     {
+        OnEnable();
+    }
+
+    private void OnEnable()
+    {
         CanShoot();
+        GetComponent<Rigidbody2D>().velocity = new Vector2(0f, -10f);
+    }
+
+    private void OnBecameInvisible()
+    {
+        gameObject.transform.position = enemy.transform.position;
+        gameObject.SetActive(false);
     }
 
     void CanShoot()
@@ -42,14 +47,15 @@ public class EnemyBullets : MonoBehaviour
             Vector2 position = transform.position;
             position += bulletDirection * speed * Time.deltaTime;
             transform.position = position;
+            OnEnable();
 
             Vector2 min = Camera.main.ViewportToWorldPoint(new Vector2(0, 0));
             Vector2 max = Camera.main.ViewportToWorldPoint(new Vector2(1, 1));
 
             if ((transform.position.x < min.x) || (transform.position.x > max.x)
-              ||(transform.position.y < min.y) || (transform.position.y > max.y))
+              || (transform.position.y < min.y) || (transform.position.y > max.y))
             {
-                Destroy(gameObject);
+                gameObject.SetActive(false);
             }
         }
     }
@@ -58,7 +64,7 @@ public class EnemyBullets : MonoBehaviour
     {
         if (collision.tag == "Player" || collision.tag == "Edge")
         {
-            Destroy(gameObject);
+            gameObject.SetActive(false);
         }
     }
 }

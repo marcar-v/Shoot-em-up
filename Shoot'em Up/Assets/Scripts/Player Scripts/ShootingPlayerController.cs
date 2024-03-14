@@ -17,9 +17,7 @@ public class ShootingPlayerController : MonoBehaviour
     {
         if ((Input.GetKeyDown(KeyCode.Mouse0) || Input.GetKeyDown(KeyCode.Space)) && Time.timeScale > 0)
         {
-            GameObject bullet1 = (GameObject)Instantiate(playerBullet);
-            bullet1.transform.position = bulletPosition1.transform.position;
-
+            playerBullet.GetComponent<BulletPool>().ShootBullet();
             shootSound.Play();
         }
         if(Input.GetKeyDown(KeyCode.LeftShift))
