@@ -10,7 +10,7 @@ public class EnemyBullet : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.tag == "Edge")
+        if(collision.tag == "Edge" || collision.tag == "Player")
         {
             gameObject.SetActive(false);
         }
