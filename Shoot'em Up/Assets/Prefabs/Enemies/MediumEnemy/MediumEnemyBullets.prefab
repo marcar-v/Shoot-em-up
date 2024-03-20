@@ -12,14 +12,14 @@ GameObject:
   - component: {fileID: 6838946885839044797}
   - component: {fileID: 6330642558099633799}
   - component: {fileID: 1694705634044645705}
-  - component: {fileID: 3609589085350548334}
+  - component: {fileID: 5563286331293729985}
   m_Layer: 0
   m_Name: MediumEnemyBullets
   m_TagString: EnemyBullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4704768788853749909
 Transform:
   m_ObjectHideFlags: 0
@@ -113,7 +113,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 5
 --- !u!70 &1694705634044645705
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -149,7 +149,7 @@ CapsuleCollider2D:
   m_Offset: {x: -0.0044960976, y: -0.007493019}
   m_Size: {x: 0.1532793, y: 0.8032789}
   m_Direction: 0
---- !u!114 &3609589085350548334
+--- !u!114 &5563286331293729985
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -158,6 +158,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 7222759408745568210}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d9031225e3235a64abfa8ba9f23fc271, type: 3}
+  m_Script: {fileID: 11500000, guid: 331981707619c3b4ca515f26553b2033, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

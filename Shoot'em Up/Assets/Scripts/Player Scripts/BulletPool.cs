@@ -6,18 +6,20 @@ public class BulletPool : MonoBehaviour
 {
     [SerializeField] int bulletPoolSize = 10;
     [SerializeField] GameObject bullet;
-    [SerializeField] GameObject[] bullets;
-    [SerializeField] int shootNumber = -1;
+    [SerializeField] List<GameObject> bulletsPool;
+    [SerializeField] int shootNumber = 0;
     [SerializeField] GameObject bulletPosition1;
+    [SerializeField] GameObject bulletPosition2;
 
 
     private void Start()
     {
-        bullets = new GameObject[bulletPoolSize];
+        bulletsPool = new List<GameObject>(5);
         for (int i = 0; i < bulletPoolSize; i++)
         {
-            bullets[i] = Instantiate(bullet, new Vector2(-10f, 0), Quaternion.identity);
-            bullets[i].transform.parent = transform;
+            GameObject bullets = Instantiate(bullet, new Vector2(-10f, 0), Quaternion.identity);
+            bulletsPool.Add(bullets);
+            bullets.transform.parent = transform;
         }
     }
     public void ShootBullet()
@@ -27,7 +29,7 @@ public class BulletPool : MonoBehaviour
         {
             shootNumber = 0;
         }
-        bullets[shootNumber].transform.position = bulletPosition1.transform.position;
-        bullets[shootNumber].SetActive(true);
+        bulletsPool[shootNumber].transform.position = bulletPosition1.transform.position;
+        bulletsPool[shootNumber].SetActive(true);
     }
 }

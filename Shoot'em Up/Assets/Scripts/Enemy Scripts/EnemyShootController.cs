@@ -4,19 +4,21 @@ using UnityEngine;
 
 public class EnemyShootController : MonoBehaviour
 {
-    [SerializeField] GameObject enemyBullet;
-    //[SerializeField] Transform enemySpawnPoint;
     [SerializeField] GameObject enemyBulletPool;
-    //[SerializeField] AudioSource shootSound;
-    [SerializeField] float nextShoot = 0f;
+    [SerializeField] AudioSource shootSound;
+    private float fireRate = 2f;
+    float delay = 3.5f;
+    bool _canShoot = true;
 
-    private void Update()
+    private void Start()
     {
-        if ((Input.GetKeyDown(KeyCode.Mouse2) || Input.GetKeyDown(KeyCode.T)))
-        {
-            enemyBulletPool.GetComponent<EnemyBulletPool>().ShootBullet();
-            //shootSound.Play();
-        }
+        InvokeRepeating("Shoot", delay, fireRate);
+    }
+
+    void Shoot()
+    {
+        enemyBulletPool.GetComponent<BulletPool>().ShootBullet();
+        shootSound.Play();
     }
 
 }
