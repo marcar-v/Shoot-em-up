@@ -310,9 +310,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e7bcfd7547693f4db4a34cfe38637f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemySpawnPoint: {fileID: 231875014274534901}
   enemyBulletPool: {fileID: 5960922919323612336}
   shootSound: {fileID: 9066578497778555929}
+  fireRate: 2
+  delay: 2
 --- !u!1 &5960922919323612336
 GameObject:
   m_ObjectHideFlags: 0
@@ -359,6 +360,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletPoolSize: 10
   bullet: {fileID: 9034560039506741438, guid: a2f1a8e05c0c6a74e9c162441a234a05, type: 3}
-  bullets: []
+  bulletsPool: []
   shootNumber: 0
   bulletPosition1: {fileID: 640315329769715989}
+  bulletPosition2: {fileID: 0}

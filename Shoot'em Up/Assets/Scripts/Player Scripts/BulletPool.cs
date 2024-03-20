@@ -24,11 +24,11 @@ public class BulletPool : MonoBehaviour
     }
     public void ShootBullet()
     {
-        shootNumber++;
-        if (shootNumber > 9)
+        if (shootNumber == bulletPoolSize)
         {
             shootNumber = 0;
         }
+        shootNumber++;
         bulletsPool[shootNumber].transform.position = bulletPosition1.transform.position;
         bulletsPool[shootNumber].SetActive(true);
     }

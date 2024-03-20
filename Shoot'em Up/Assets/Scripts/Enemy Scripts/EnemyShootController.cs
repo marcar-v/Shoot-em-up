@@ -6,19 +6,16 @@ public class EnemyShootController : MonoBehaviour
 {
     [SerializeField] GameObject enemyBulletPool;
     [SerializeField] AudioSource shootSound;
-    private float fireRate = 2f;
-    float delay = 3.5f;
-    bool _canShoot = true;
+    [SerializeField] float fireRate;
+    [SerializeField] float delay;
 
     private void Start()
     {
         InvokeRepeating("Shoot", delay, fireRate);
     }
-
     void Shoot()
     {
-        enemyBulletPool.GetComponent<BulletPool>().ShootBullet();
-        shootSound.Play();
+     enemyBulletPool.GetComponent<BulletPool>().ShootBullet();
+     shootSound.Play();
     }
-
 }

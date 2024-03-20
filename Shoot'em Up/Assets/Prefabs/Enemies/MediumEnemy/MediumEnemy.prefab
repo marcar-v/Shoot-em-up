@@ -333,9 +333,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e7bcfd7547693f4db4a34cfe38637f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemySpawnPoint: {fileID: 0}
   enemyBulletPool: {fileID: 5801507570539853029}
   shootSound: {fileID: 3608309924839843531}
+  fireRate: 5
+  delay: 25
 --- !u!114 &571818996866238534
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -8,7 +8,13 @@ public class EnemyBullet : MonoBehaviour
     {
         GetComponent<Rigidbody2D>().velocity = new Vector2(0f, -10f);
     }
-
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.tag == "Edge")
+        {
+            gameObject.SetActive(false);
+        }
+    }
     private void OnBecameInvisible()
     {
         gameObject.transform.position = new Vector3(0f, 10f);
