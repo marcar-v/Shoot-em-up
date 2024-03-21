@@ -358,7 +358,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ba52ef1e07f0e0489a2e79f358c985c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletPoolSize: 10
+  bulletPoolSize: 4
   bullet: {fileID: 9034560039506741438, guid: a2f1a8e05c0c6a74e9c162441a234a05, type: 3}
   bulletsPool: []
   shootNumber: 0
